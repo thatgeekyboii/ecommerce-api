@@ -1,0 +1,55 @@
+Queries
+
+getCustomerSpending: Fetches the total spending, average order value, and last order date for a customer.
+
+query {
+  getCustomerSpending(customerId: "adf96a4e-6987-4731-8798-09b109ff65c3") {
+    customerId
+    totalSpent
+    averageOrderValue
+    lastOrderDate
+  }
+}
+getTopSellingProducts Fetches the top-selling products, with an optional limit on the number of products.
+
+query {
+  getTopSellingProducts(limit: 10) {
+    productId
+    name
+    totalSold
+  }
+}
+getSalesAnalytics Fetches the sales analytics for a specific date range.
+
+query {
+  getSalesAnalytics(startDate: "2024-12-01", endDate: "2025-01-31") {
+    totalRevenue
+    completedOrders
+    categoryBreakdown {
+      category
+      revenue
+    }
+  }
+}
+
+Mutations
+
+placeOrder Allows a customer to place an order by providing order details.
+
+mutation {
+  placeOrder(input: {
+    customerId: "1234",
+    products: [
+      { productId: "product-uuid-1", quantity: 2, priceAtPurchase: 19.99 },
+      { productId: "product-uuid-2", quantity: 1, priceAtPurchase: 39.99 }
+    ],
+    totalAmount: 79.97,
+    orderDate: "2025-05-15T14:00:00Z",
+    status: "pending"
+  }) {
+    _id
+    totalAmount
+    orderDate
+    status
+  }
+}

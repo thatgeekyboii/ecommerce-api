@@ -1,0 +1,27 @@
+{
+  "name": "mongo-graphql-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "mongoose": "^8.14.3",
+    "redis": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

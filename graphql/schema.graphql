@@ -1,0 +1,63 @@
+type CustomerSpending {
+  customerId: ID!
+  totalSpent: Float!
+  averageOrderValue: Float!
+  lastOrderDate: String
+}
+
+type TopProduct {
+  productId: ID!
+  name: String!
+  totalSold: Int!
+}
+
+type CategoryBreakdown {
+  category: String!
+  revenue: Float!
+}
+
+type SalesAnalytics {
+  totalRevenue: Float!
+  completedOrders: Int!
+  categoryBreakdown: [CategoryBreakdown]
+}
+
+type Query {
+  getCustomerSpending(customerId: ID!): CustomerSpending
+  getTopSellingProducts(limit: Int!): [TopProduct]
+  getSalesAnalytics(startDate: String!, endDate: String!): SalesAnalytics
+}
+
+
+type OrderProduct {
+  productId: ID!
+  quantity: Int!
+  priceAtPurchase: Float!
+}
+
+type Order {
+  _id: ID!
+  customerId: ID!
+  products: [OrderProduct!]!
+  totalAmount: Float!
+  orderDate: String!
+  status: String!
+}
+
+input OrderProductInput {
+  productId: ID!
+  quantity: Int!
+  priceAtPurchase: Float!
+}
+
+input PlaceOrderInput {
+  customerId: ID!
+  products: [OrderProductInput!]!
+  totalAmount: Float!
+  orderDate: String!
+  status: String!
+}
+
+type Mutation {
+  placeOrder(input: PlaceOrderInput!): Order
+}
